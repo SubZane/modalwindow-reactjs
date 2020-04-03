@@ -1,140 +1,59 @@
 import React from 'react'
-import { styled, css } from './theme'
+import { styled } from './theme'
+import { AnimationType } from './Types/Types'
+import './Animations/animations.scss'
 
-type ContentType = {
-	visible: boolean
-	animation: string
-}
-
-const Content = styled.div<ContentType>`
+const Content = styled.div`
 	color: #fff;
-	background: ${props => props.theme.backgroundColor};
+	background: #eae9e3;
+	margin: 0 auto;
 	max-width: 600px;
 	overflow: hidden;
 	position: absolute;
-	bottom: 0px;
+	bottom: 70px;
 	top: 0;
 	left: 0;
 	right: 0;
-
-	${props =>
-		props.animation === 'flip-top' &&
-		css`
-			border-bottom-left-radius: ${props.theme.borderRadius};
-			border-bottom-right-radius: ${props.theme.borderRadius};
-			border-top-left-radius: 0;
-			border-top-right-radius: 0;
-			top: 0;
-			right: 0;
-
-			transform-style: preserve-3d;
-			transform: translateY(-100%) rotateX(90deg);
-			transform-origin: 100% 0;
-			opacity: 0;
-			transition-timing-function: ease-out;
-			transition: all;
-			transition-duration: ${props.theme.transitionDuration};
-		`}
-
-  ${props =>
-		props.animation === 'door-left' &&
-		css`
-			border-bottom-left-radius: 0;
-			border-bottom-right-radius: ${props.theme.borderRadius};
-			border-top-left-radius: 0;
-			border-top-right-radius: ${props.theme.borderRadius};
-
-			transform-style: preserve-3d;
-			transform: translateZ(100px) translateX(0%) rotateY(90deg);
-			transform-origin: 0 100%;
-			opacity: 0;
-			transition: all;
-			transition-duration: ${props.theme.transitionDuration};
-		`}
-
-	${props =>
-		props.animation === 'door-right' &&
-		css`
-			border-bottom-left-radius: ${props.theme.borderRadius};
-			border-bottom-right-radius: 0;
-			border-top-left-radius: ${props.theme.borderRadius};
-			border-top-right-radius: 0;
-
-			transform-style: preserve-3d;
-			transform: translateZ(100px) translateX(30%) rotateY(-90deg);
-			transform-origin: 100% 0;
-			opacity: 0;
-			transition: all;
-			transition-duration: ${props.theme.transitionDuration};
-		`}
-
-	${props =>
-		props.animation === 'flip-bottom' &&
-		css`
-		border-bottom-left-radius: 0;
-		border-bottom-right-radius: 0;
-		border-top-left-radius: ${props.theme.borderRadius};
-		border-top-right-radius: $props.theme.borderRadius};
-		bottom: 0;
-
-		transform-style: preserve-3d;
-		transform: translateY(100%) rotateX(90deg);
-		transform-origin: 0 100%;
-		opacity: 0;
-		transition-timing-function: ease-out;
-		transition: all;
-		transition-duration: ${props.theme.transitionDuration};
-	`}
-
-	${props =>
-		props.visible &&
-		(props.animation === 'door-left' || props.animation === 'door-right') &&
-		css`
-			transform: translateZ(0px) translateX(0%) rotateY(0deg);
-			opacity: 1;
-		`}
-
-	${props =>
-		props.visible &&
-		props.animation === 'flip-top' &&
-		css`
-			transform: translateY(0%) rotateX(0deg);
-			opacity: 1;
-		`}
-
-	${props =>
-		props.visible &&
-		props.animation === 'flip-bottom' &&
-		css`
-			transform: translateY(0%) rotateX(0deg);
-			opacity: 1;
-		`}
-
+	border-radius: 7px;
 `
 
 const Inner = styled.div`
 	overflow-y: auto;
-	padding-left: ${props => props.theme.innerPadding};
-	padding-right: ${props => props.theme.innerPadding};
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 	margin: 0;
 	font-weight: 300;
-	font-size: 1.15em;
+	font-size: 16px;
+	color: #333;
 	position: absolute;
-	bottom: ${props => props.theme.innerPadding};
-	top: ${props => props.theme.innerPadding};
-	right: 0;
-	left: 0;
+	bottom: 0px;
+	top: 0px;
+	img {
+		margin-bottom: 15px;
+	}
 `
 
 interface iProps {
 	visible: boolean
-	animation: 'door-left' | 'door-right' | 'flip-bottom' | 'flip-top'
+	animation: AnimationType
 	children?: JSX.Element[] | JSX.Element
 }
 
+function setStyle(animation: AnimationType, visible: boolean) {
+	if (visible) {
+		const css = animation + ' show-' + animation
+		return css
+	} else {
+		return animation
+	}
+}
+
 function PanelContent(props: iProps) {
+	console.log('props.animation: ' + props.animation)
 	return (
-		<Content visible={props.visible} animation={props.animation}>
+		<Content className={setStyle(props.animation, props.visible)}>
 			<Inner>{props.children}</Inner>
 		</Content>
 	)

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { css, createGlobalStyle } from './theme'
+import { ModalWindowSettingsType, FadeType } from './Types/Types'
 import Overlay from './Overlay'
-import Panel from './Panel'
+import Modal from './Modal'
 
 const GlobalStyle = createGlobalStyle<{ visible: boolean }>`
 body {
@@ -28,9 +29,9 @@ html {
 `
 
 interface iProps {
-	animation: 'door-left' | 'door-right' | 'flip-bottom' | 'flip-top'
 	children?: JSX.Element[] | JSX.Element
-	state: 'open' | 'close' | ''
+	settings: ModalWindowSettingsType
+	closeHandler: () => void
 }
 
 function ModalWindow(props: iProps) {
@@ -38,34 +39,45 @@ function ModalWindow(props: iProps) {
 	const [isPanelVisible, setPanelVisible] = useState<boolean>(false)
 	const [hasOverlayAnimationEnded, sethasOverlayAnimationEnded] = useState<boolean>(false)
 	const [hasPanelTransitionEnded, sethasPanelTransitionEnded] = useState<boolean>(false)
-	const [fade, setFade] = useState<'in' | 'out' | ''>('')
+	const [fade, setFade] = useState<FadeType>('')
 
 	useEffect(() => {
-		if (props.state === 'open') {
+		console.log(props.settings.open)
+		if (props.settings.open) {
 			openPanel()
-		} else if (props.state === 'close') {
+		} else {
 			closePanel()
 		}
-	}, [props.state])
+	}, [props.settings.open])
 
 	useEffect(() => {
+		// if modal should be open
 		if (togglePanel) {
-			setPanelVisible(true)
-			setFade('in')
-			if (hasOverlayAnimationEnded && hasPanelTransitionEnded) {
-				sethasOverlayAnimationEnded(false)
-				sethasPanelTransitionEnded(false)
+			if (!isPanelVisible) {
+				setPanelVisible(true) // set modal to visible
+				setFade('in') // set overlay to fade in
 			}
 		} else {
 			if (isPanelVisible) {
 				setPanelVisible(false)
 				setFade('out')
 			}
+		}
+	}, [togglePanel, isPanelVisible, props.settings.animation])
+
+	useEffect(() => {
+		if (togglePanel) {
+			if (hasOverlayAnimationEnded && hasPanelTransitionEnded) {
+				// Reset states
+				sethasOverlayAnimationEnded(false)
+				sethasPanelTransitionEnded(false)
+			}
+		} else {
 			if (hasOverlayAnimationEnded && fade === 'out') {
 				setFade('')
 			}
 		}
-	}, [hasOverlayAnimationEnded, hasPanelTransitionEnded, togglePanel, isPanelVisible, fade])
+	}, [hasOverlayAnimationEnded, hasPanelTransitionEnded, togglePanel, fade])
 
 	function closePanel() {
 		setTogglePanel(false)
@@ -87,14 +99,9 @@ function ModalWindow(props: iProps) {
 		<React.Fragment>
 			<GlobalStyle visible={isPanelVisible} />
 
-			<Overlay fade={fade} handleEvent={closePanel} onAnimationEnd={onOverlayAnimationEnd} />
+			<Overlay fade={fade} handleEvent={props.closeHandler} onAnimationEnd={onOverlayAnimationEnd} />
 
-			<Panel
-				animation={props.animation}
-				visible={isPanelVisible}
-				onTransitionEnd={onPanelTransitionEnd}
-				children={props.children}
-			/>
+			<Modal animation={props.settings.animation} visible={isPanelVisible} onTransitionEnd={onPanelTransitionEnd} children={props.children} />
 		</React.Fragment>
 	)
 }

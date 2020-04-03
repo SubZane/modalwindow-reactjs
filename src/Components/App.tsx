@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { css, createGlobalStyle } from './theme'
-import { ModalWindowSettingsType, FadeType } from './Types/Types'
+import { FadeType, AnimationType } from './Types/Types'
 import Overlay from './Overlay'
 import Modal from './Modal'
 
@@ -30,8 +30,9 @@ html {
 
 interface iProps {
 	children?: JSX.Element[] | JSX.Element
-	settings: ModalWindowSettingsType
+	open: boolean
 	closeHandler: () => void
+	animation: AnimationType
 }
 
 function ModalWindow(props: iProps) {
@@ -42,13 +43,12 @@ function ModalWindow(props: iProps) {
 	const [fade, setFade] = useState<FadeType>('')
 
 	useEffect(() => {
-		console.log(props.settings.open)
-		if (props.settings.open) {
+		if (props.open) {
 			openPanel()
 		} else {
 			closePanel()
 		}
-	}, [props.settings.open])
+	}, [props.open])
 
 	useEffect(() => {
 		// if modal should be open
@@ -63,7 +63,7 @@ function ModalWindow(props: iProps) {
 				setFade('out')
 			}
 		}
-	}, [togglePanel, isPanelVisible, props.settings.animation])
+	}, [togglePanel, isPanelVisible])
 
 	useEffect(() => {
 		if (togglePanel) {
@@ -101,7 +101,7 @@ function ModalWindow(props: iProps) {
 
 			<Overlay fade={fade} handleEvent={props.closeHandler} onAnimationEnd={onOverlayAnimationEnd} />
 
-			<Modal animation={props.settings.animation} visible={isPanelVisible} onTransitionEnd={onPanelTransitionEnd} children={props.children} />
+			<Modal animation={props.animation} visible={isPanelVisible} onTransitionEnd={onPanelTransitionEnd} children={props.children} />
 		</React.Fragment>
 	)
 }

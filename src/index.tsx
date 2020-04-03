@@ -1,35 +1,27 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import { AnimationType, ModalWindowSettingsType } from './Components/Types/Types'
+import { AnimationType } from './Components/Types/Types'
 import ModalWindow from './Components/App'
 import Button from './Components/MWButton'
 import CloseButton from './Components/CloseButton'
 import { ThemeProvider, theme } from './Components/theme'
 
 function ModalWindowContainer() {
-	const [ModalWindowSettings, setModalWindowSettings] = useState<ModalWindowSettingsType>({
-		open: false,
-		animation: 'effect-1'
-	})
+	const [effect, setEffect] = useState<AnimationType>('effect-1')
+	const [open, setOpen] = useState<boolean>(false)
 
 	function openModalWindow(animation: AnimationType) {
-		setModalWindowSettings({
-			open: true,
-			animation: animation
-		})
-		console.log('open modal')
+		setEffect(animation)
+		setOpen(true)
 	}
 
 	function closeModalWindow() {
-		setModalWindowSettings({
-			...ModalWindowSettings,
-			open: false
-		})
+		setOpen(false)
 	}
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
-				<ModalWindow closeHandler={closeModalWindow} settings={ModalWindowSettings}>
+				<ModalWindow closeHandler={closeModalWindow} animation={effect} open={open}>
 					<img alt="Code" src="./img/code.png" className="img-fluid" />
 
 					<p>Sed posuere consectetur est at lobortis. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
@@ -55,6 +47,9 @@ function ModalWindowContainer() {
 				<Button handleEvent={() => openModalWindow('effect-12')} text={'3D slit'} />
 				<Button handleEvent={() => openModalWindow('effect-13')} text={'3D rotate bottom'} />
 				<Button handleEvent={() => openModalWindow('effect-14')} text={'3D rotate in left'} />
+
+				<Button handleEvent={() => setEffect('effect-14')} text={'SET: 3D rotate in left'} />
+				<Button handleEvent={() => setOpen(true)} text={'JUST OPEN'} />
 			</ThemeProvider>
 		</React.Fragment>
 	)

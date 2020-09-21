@@ -10,14 +10,10 @@ function ModalWindowContainer() {
 	const [effect, setEffect] = useState<AnimationType>('effect-1')
 	const [open, setOpen] = useState<boolean>(false)
 
-	function openModalWindow(animation: AnimationType) {
-		setEffect(animation)
-		setOpen(true)
-	}
-
 	function closeModalWindow() {
 		setOpen(false)
 	}
+
 	return (
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
@@ -33,23 +29,25 @@ function ModalWindowContainer() {
 					<p>Sed posuere consectetur est at lobortis. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
 					<CloseButton handleEvent={() => closeModalWindow()} text={'Close'} />
 				</ModalWindow>
-				<Button handleEvent={() => openModalWindow('effect-1')} text={'Fade and Zoom'} />
-				<Button handleEvent={() => openModalWindow('effect-2')} text={'Slide from right'} />
-				<Button handleEvent={() => openModalWindow('effect-3')} text={'Pop from bottom'} />
-				<Button handleEvent={() => openModalWindow('effect-4')} text={'Newspaper'} />
-				<Button handleEvent={() => openModalWindow('effect-5')} text={'Fall'} />
-				<Button handleEvent={() => openModalWindow('effect-6')} text={'Side fall'} />
-				<Button handleEvent={() => openModalWindow('effect-7')} text={'Sticky up'} />
-				<Button handleEvent={() => openModalWindow('effect-8')} text={'Side flip'} />
-				<Button handleEvent={() => openModalWindow('effect-9')} text={'Top flip'} />
-				<Button handleEvent={() => openModalWindow('effect-10')} text={'3D sign'} />
-				<Button handleEvent={() => openModalWindow('effect-11')} text={'Scale'} />
-				<Button handleEvent={() => openModalWindow('effect-12')} text={'3D slit'} />
-				<Button handleEvent={() => openModalWindow('effect-13')} text={'3D rotate bottom'} />
-				<Button handleEvent={() => openModalWindow('effect-14')} text={'3D rotate in left'} />
-
-				<Button handleEvent={() => setEffect('effect-14')} text={'SET: 3D rotate in left'} />
-				<Button handleEvent={() => setOpen(true)} text={'JUST OPEN'} />
+				<div className="select">
+					<select onChange={(e) => setEffect(e.currentTarget.value as AnimationType)}>
+						<option value="effect-1">Fade and Zoom</option>
+						<option value="effect-2">Slide from right</option>
+						<option value="effect-3">Pop from bottom</option>
+						<option value="effect-4">Newspaper</option>
+						<option value="effect-5">Fall</option>
+						<option value="effect-6">Side fall</option>
+						<option value="effect-7">Sticky up</option>
+						<option value="effect-8">Side flip</option>
+						<option value="effect-9">Top flip</option>
+						<option value="effect-10">3D sign</option>
+						<option value="effect-11">Scale</option>
+						<option value="effect-12">3D slit</option>
+						<option value="effect-13">3D rotate bottom</option>
+						<option value="effect-14">3D rotate in left</option>
+					</select>
+				</div>
+				<Button handleEvent={() => setOpen(true)} text={'Open Modal'} />
 			</ThemeProvider>
 		</React.Fragment>
 	)

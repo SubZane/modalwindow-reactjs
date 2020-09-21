@@ -29,7 +29,7 @@ const ModalElement = styled.div<PanelType>`
 	}
 
 
-	${props =>
+	${(props) =>
 		props.visible &&
 		css`
 			visibility: visible;
@@ -50,6 +50,7 @@ interface iProps {
 }
 
 function Modal(props: iProps) {
+	//console.log('MODAL.TSX: props.animation: ' + props.animation)
 	return (
 		<ModalElement className={setStyle(props.animation)} visible={props.visible} onTransitionEnd={props.onTransitionEnd}>
 			<Content visible={props.visible} animation={props.animation} children={props.children} />

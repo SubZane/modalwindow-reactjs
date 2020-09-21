@@ -51,7 +51,7 @@ function setStyle(animation: AnimationType, visible: boolean) {
 }
 
 function PanelContent(props: iProps) {
-	console.log('props.animation: ' + props.animation)
+	//console.log('CONTENT.TSX: props.animation: ' + props.animation)
 	return (
 		<Content className={setStyle(props.animation, props.visible)}>
 			<Inner>{props.children}</Inner>

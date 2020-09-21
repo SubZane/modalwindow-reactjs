@@ -6,7 +6,7 @@ import Modal from './Modal'
 
 const GlobalStyle = createGlobalStyle<{ visible: boolean }>`
 body {
-	${props =>
+	${(props) =>
 		props.visible &&
 		css`
 			height: 100%;
@@ -17,7 +17,7 @@ body {
 }
 
 html {
-	${props =>
+	${(props) =>
 		props.visible &&
 		css`
 			height: 100%;
@@ -36,6 +36,8 @@ interface iProps {
 }
 
 function ModalWindow(props: iProps) {
+	//console.log('APP.TSX: props.animation: ' + props.animation)
+
 	const [togglePanel, setTogglePanel] = useState<boolean>(false)
 	const [isPanelVisible, setPanelVisible] = useState<boolean>(false)
 	const [hasOverlayAnimationEnded, sethasOverlayAnimationEnded] = useState<boolean>(false)
@@ -98,9 +100,7 @@ function ModalWindow(props: iProps) {
 	return (
 		<React.Fragment>
 			<GlobalStyle visible={isPanelVisible} />
-
 			<Overlay fade={fade} handleEvent={props.closeHandler} onAnimationEnd={onOverlayAnimationEnd} />
-
 			<Modal animation={props.animation} visible={isPanelVisible} onTransitionEnd={onPanelTransitionEnd} children={props.children} />
 		</React.Fragment>
 	)

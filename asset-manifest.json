@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/modalwindow-reactjs/static/css/main.415b1b3e.chunk.css",
+    "main.js": "/modalwindow-reactjs/static/js/main.320e3bd7.chunk.js",
+    "main.js.map": "/modalwindow-reactjs/static/js/main.320e3bd7.chunk.js.map",
+    "runtime-main.js": "/modalwindow-reactjs/static/js/runtime-main.4b619718.js",
+    "runtime-main.js.map": "/modalwindow-reactjs/static/js/runtime-main.4b619718.js.map",
+    "static/js/2.fc8ca0f4.chunk.js": "/modalwindow-reactjs/static/js/2.fc8ca0f4.chunk.js",
+    "static/js/2.fc8ca0f4.chunk.js.map": "/modalwindow-reactjs/static/js/2.fc8ca0f4.chunk.js.map",
+    "index.html": "/modalwindow-reactjs/index.html",
+    "precache-manifest.191833cd94558b9ed820d00183fbb224.js": "/modalwindow-reactjs/precache-manifest.191833cd94558b9ed820d00183fbb224.js",
+    "service-worker.js": "/modalwindow-reactjs/service-worker.js",
+    "static/css/main.415b1b3e.chunk.css.map": "/modalwindow-reactjs/static/css/main.415b1b3e.chunk.css.map",
+    "static/js/2.fc8ca0f4.chunk.js.LICENSE.txt": "/modalwindow-reactjs/static/js/2.fc8ca0f4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4b619718.js",
+    "static/js/2.fc8ca0f4.chunk.js",
+    "static/css/main.415b1b3e.chunk.css",
+    "static/js/main.320e3bd7.chunk.js"
+  ]
+}

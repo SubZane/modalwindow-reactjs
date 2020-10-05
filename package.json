@@ -1,7 +1,12 @@
 {
 	"name": "modalwindow-reactjs",
-	"version": "0.1.0",
-	"private": true,
+	"version": "1.0.1",
+	"private": false,
+	"description": "modalwindow-reactjs is a Modal Window component written ReactJS with TypeScript and Styled Components.",
+	"repository": "https://subzane@github.com/SubZane/modalwindow-reactjs.git",
+	"homepage": "https://subzane.github.io/modalwindow-reactjs",
+	"bugs": "https://github.com/SubZane/modalwindow-reactjs/issues",
+	"author": "Andreas Lee-Norman <andreas@lee-norman.com>",
 	"dependencies": {
 		"@glitz/core": "^2.1.3",
 		"@glitz/react": "^3.1.3",
@@ -15,7 +20,7 @@
 		"node-sass": "^4.13.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
-				"styled-components": "^5.0.1",
+		"styled-components": "^5.0.1",
 		"typescript": "^3.8.3",
 		"react-scripts": "3.4.3"
 	},

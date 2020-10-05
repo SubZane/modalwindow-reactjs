@@ -1,4 +1,7 @@
 <p align="center">
+  <img src="https://raw.githubusercontent.com/SubZane/flymenu-reactjs/master/public/img/github-img.png" width="400" alt="flymenu-reactjs">
+</p>
+<p align="center">
 	<img src="https://img.shields.io/github/package-json/dependency-version/subzane/modalwindow-reactjs/styled-components?color=%23DB7093">
 	<img src="https://img.shields.io/github/package-json/dependency-version/subzane/modalwindow-reactjs/react?color=61DAFB">
 	<img src="https://img.shields.io/github/package-json/dependency-version/subzane/modalwindow-reactjs/react-dom?color=61DAFB">
@@ -17,7 +20,7 @@ modalwindow-reactjs is a Modal Window component written ReactJS with TypeScript 
 
 ## Demo
 
-A demo can be found here: <a href="https://andreasnorman.com/modalwindow-reactjs">Demo</a>
+A demo can be found here: <a href="https://subzane.github.io/modalwindow-reactjs/">Demo</a>
 
 ## Installation
 

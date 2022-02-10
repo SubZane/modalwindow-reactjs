@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
-import { AnimationType } from './Components/Types/Types'
+
 import ModalWindow from './Components/App'
-import Button from './Components/MWButton'
 import CloseButton from './Components/CloseButton'
-import { ThemeProvider, theme } from './Components/theme'
+import Button from './Components/MWButton'
+import { theme, ThemeProvider } from './Components/theme'
+import { AnimationType } from './Components/Types/Types'
 
 function ModalWindowContainer() {
 	const [effect, setEffect] = useState<AnimationType>('effect-1')
@@ -18,7 +19,7 @@ function ModalWindowContainer() {
 		<React.Fragment>
 			<ThemeProvider theme={theme}>
 				<ModalWindow closeHandler={closeModalWindow} animation={effect} open={open}>
-					<img alt="Code" src="./img/code.png" className="img-fluid" />
+					<img alt="Code" src={process.env.PUBLIC_URL + '/img/code.png'} className="img-fluid" />
 
 					<p>Sed posuere consectetur est at lobortis. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
 					<p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean lacinia bibendum nulla sed consectetur. Vestibulum id ligula porta felis euismod semper.</p>

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/SubZane/flymenu-reactjs/master/public/img/github-img.png" width="400" alt="flymenu-reactjs">
+  <img src="https://raw.githubusercontent.com/SubZane/modalwindow-reactjs/master/public/img/github-img.png" width="400" alt="modalwindow-reactjs">
 </p>
 <p align="center">
 	<img src="https://img.shields.io/github/package-json/dependency-version/subzane/modalwindow-reactjs/styled-components?color=%23DB7093">

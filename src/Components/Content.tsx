@@ -1,7 +1,9 @@
+import './Animations/animations.scss'
+
 import React from 'react'
+
 import { styled } from './theme'
 import { AnimationType } from './Types/Types'
-import './Animations/animations.scss'
 
 const Content = styled.div`
 	color: #fff;
@@ -22,7 +24,7 @@ const Inner = styled.div`
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 	margin: 0;
 	font-weight: 300;
 	font-size: 16px;

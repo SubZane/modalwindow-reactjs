@@ -47,4 +47,4 @@ Open [`localhost:3000`](http://localhost:3000) in your browser.
 
 ## Requirements
 
-Requires Node 10+ to run
+Requires Node 12+ to run

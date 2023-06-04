@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { css, createGlobalStyle } from './theme'
-import { FadeType, AnimationType } from './Types/Types'
-import Overlay from './Overlay'
+import React, { useEffect, useState } from 'react'
+
 import Modal from './Modal'
+import Overlay from './Overlay'
+import { createGlobalStyle, css } from './theme'
+import { AnimationType, FadeType } from './Types/Types'
 
 const GlobalStyle = createGlobalStyle<{ visible: boolean }>`
 body {
